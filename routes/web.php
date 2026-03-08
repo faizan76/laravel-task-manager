@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 
+// Home redirect to tasks
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('tasks.index');
 });
+
+// Resource routes (all CRUD)
+Route::resource('tasks', TaskController::class);
