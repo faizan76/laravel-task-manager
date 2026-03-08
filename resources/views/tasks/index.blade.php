@@ -17,7 +17,13 @@
     @foreach($tasks as $task)
         <tr>
             <td>{{ $task->title }}</td>
-            <td>{{ $task->completed ? 'Yes' : 'No' }}</td>
+            <td>
+   		@if($task->completed)
+       	 	    <span class="badge bg-success">Completed</span>
+    		@else
+        	    <span class="badge bg-secondary">Pending</span>
+   		@endif
+	    </td>
             <td>
                 <a href="{{ route('tasks.edit', $task) }}" class="btn btn-warning btn-sm">Edit</a>
                 <form action="{{ route('tasks.destroy', $task) }}" method="POST" style="display:inline;">
