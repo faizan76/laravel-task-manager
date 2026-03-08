@@ -15,7 +15,7 @@
     </thead>
     <tbody>
     @foreach($tasks as $task)
-        <tr>
+        <tr @if($task->updated_at > now()->subDay()) class="table-warning" @endif>
             <td>{{ $task->title }}</td>
             <td>
    		@if($task->completed)
