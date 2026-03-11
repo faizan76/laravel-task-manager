@@ -1,0 +1,19 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "php -S 0.0.0.0:$PORT -t public"
+restartPolicyType = "ON_FAILURE"
+
+[phases.setup]
+nixPkgs = ["php84", "php84Packages.composer"]
+
+[phases.install]
+cmds = ["composer install --no-dev --optimize-autoloader"]
+
+[phases.build]
+cmds = [
+  "php artisan config:clear",
+  "php artisan key:generate --force",
+  "php artisan migrate --force"
+]
