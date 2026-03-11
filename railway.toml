@@ -1,6 +1,6 @@
 [build]
 builder = "railpack"
-buildCommand = "composer install --no-dev --optimize-autoloader && php artisan config:clear && php artisan key:generate --force && php artisan migrate --force"
+buildCommand = "composer install --no-dev --optimize-autoloader && php artisan config:clear && php artisan migrate --force"
 
 [deploy]
 startCommand = "php -S 0.0.0.0:$PORT -t public"
